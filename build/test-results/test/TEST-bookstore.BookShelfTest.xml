@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BookShelf" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-16T20:35:05" hostname="DESKTOP-MPBV7DA" time="0.012">
+<testsuite name="BookShelf" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-16T22:17:58" hostname="DESKTOP-MPBV7DA" time="0.016">
   <properties/>
-  <testcase name="should be empty when no book is added" classname="bookstore.BookShelfTest" time="0.012"/>
+  <testcase name="should contain n books when n books added" classname="bookstore.BookShelfTest" time="0.014"/>
+  <testcase name="should be empty when no book is added" classname="bookstore.BookShelfTest" time="0.001"/>
   <system-out><![CDATA[BookShelf
+BookShelf
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
