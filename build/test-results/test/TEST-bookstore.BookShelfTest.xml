@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BookShelf" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-16T22:17:58" hostname="DESKTOP-MPBV7DA" time="0.016">
+<testsuite name="BookShelf" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-09-16T22:54:19" hostname="DESKTOP-MPBV7DA" time="0.02">
   <properties/>
   <testcase name="should contain n books when n books added" classname="bookstore.BookShelfTest" time="0.014"/>
+  <testcase name="should return immutable books" classname="bookstore.BookShelfTest" time="0.001"/>
   <testcase name="should be empty when no book is added" classname="bookstore.BookShelfTest" time="0.001"/>
+  <testcase name="should short books by title." classname="bookstore.BookShelfTest" time="0.002"/>
+  <testcase name="should be empty when called without books" classname="bookstore.BookShelfTest" time="0.0"/>
   <system-out><![CDATA[BookShelf
+BookShelf
+BookShelf
+BookShelf
 BookShelf
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

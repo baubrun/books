@@ -1,18 +1,21 @@
 package bookstore;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class BookShelf {
 
     private final List<String> books = new ArrayList<>();
 
     public List<String> books(){
-        return books;
+        return Collections.unmodifiableList(books);
     }
 
     public void add(String... newBook){
         Arrays.stream(newBook).forEach(books::add);
+    }
+
+    public List<String> arrange(){
+        books.sort(Comparator.naturalOrder());
+        return books;
     }
 }
