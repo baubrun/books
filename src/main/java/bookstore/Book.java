@@ -2,7 +2,7 @@ package bookstore;
 
 import java.time.LocalDate;
 
-public class Book {
+public class Book implements Comparable<Book> {
     private final String title;
     private final String author;
     private final LocalDate publishedOn;
@@ -41,5 +41,10 @@ public class Book {
 
     public void setFinishedReadingOn(LocalDate finishedReadingOn) {
         this.finishedReadingOn = finishedReadingOn;
+    }
+
+    @Override
+    public int compareTo(Book book){
+        return this.title.compareTo(book.title);
     }
 }

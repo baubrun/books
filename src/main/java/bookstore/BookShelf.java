@@ -1,21 +1,25 @@
 package bookstore;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookShelf {
 
-    private final List<String> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
-    public List<String> books(){
+    public List<Book> books(){
         return Collections.unmodifiableList(books);
     }
 
-    public void add(String... newBook){
+    public void add(Book... newBook){
         Arrays.stream(newBook).forEach(books::add);
     }
 
-    public List<String> arrange(){
-        books.sort(Comparator.naturalOrder());
-        return books;
+    public List<Book> arrange(){
+       return arrange(Comparator.naturalOrder());
+    }
+
+    public List<Book> arrange(Comparator<Book> attr){
+       return books.stream().sorted(attr).collect(Collectors.toList());
     }
 }
