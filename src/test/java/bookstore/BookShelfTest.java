@@ -3,7 +3,6 @@ package bookstore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -11,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("BookShelf")
 public class BookShelfTest {
@@ -106,25 +105,11 @@ public class BookShelfTest {
     @DisplayName("should sort books by title DESC order.")
     public void book_shelf_arrange_by_title_DESC(){
         shelf.add(book1, book3, book2);
-        List<Book> books = shelf.arrange(
-                Comparator.<Book>naturalOrder().reversed()
-        );
-        assertEquals(
-                List.of(book1, book2, book3),
-                books,
-                () -> "Books should be sorted by title ASC order."
-        );
+        Comparator<Book> reversedOrder = Comparator.<Book>naturalOrder().reversed();
+        List<Book> books = shelf.arrange(reversedOrder);
+        assertThat(books).isSortedAccordingTo(reversedOrder);
 
     }
-
-
-    @Test
-    @DisplayName("should arrange by attribute")
-    public void book_shelf_arrange_by_attribute(){
-        shelf.add(book1, book2, book3);
-        List<Book> books = shelf.arrange();
-    }
-
-
+    
 
 }

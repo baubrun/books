@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BookShelf" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-09-17T00:01:40" hostname="DESKTOP-MPBV7DA" time="0.02">
+<testsuite name="BookShelf" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-09-17T00:31:15" hostname="DESKTOP-MPBV7DA" time="0.055">
   <properties/>
-  <testcase name="should contain number books when number books added" classname="bookstore.BookShelfTest" time="0.013"/>
-  <testcase name="should arrange by attribute" classname="bookstore.BookShelfTest" time="0.001"/>
-  <testcase name="should sort books by title DESC order." classname="bookstore.BookShelfTest" time="0.001"/>
+  <testcase name="should contain number books when number books added" classname="bookstore.BookShelfTest" time="0.015"/>
+  <testcase name="should sort books by title DESC order." classname="bookstore.BookShelfTest" time="0.033"/>
   <testcase name="should return immutable books" classname="bookstore.BookShelfTest" time="0.001"/>
-  <testcase name="should be empty when no book is added" classname="bookstore.BookShelfTest" time="0.001"/>
+  <testcase name="should be empty when no book is added" classname="bookstore.BookShelfTest" time="0.0"/>
   <testcase name="should sort books by title ASC order." classname="bookstore.BookShelfTest" time="0.001"/>
   <testcase name="should be empty when called without books" classname="bookstore.BookShelfTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
