@@ -48,4 +48,12 @@ public class Book implements Comparable<Book> {
         return this.title.compareTo(book.title);
     }
 
+    public boolean isRead(){
+        return startedReadingOn != null && finishedReadingOn != null;
+    }
+
+    public boolean isProgress(){
+        return startedReadingOn != null && finishedReadingOn == null;
+    }
+
 }

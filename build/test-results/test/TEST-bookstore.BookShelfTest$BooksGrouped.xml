@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="grouping books" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-09-17T19:10:38" hostname="DESKTOP-MPBV7DA" time="0.053">
-  <properties/>
-  <testcase name="should group books by attribute" classname="bookstore.BookShelfTest$BooksGrouped" time="0.05"/>
-  <testcase name="should group books by published year" classname="bookstore.BookShelfTest$BooksGrouped" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

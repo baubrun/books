@@ -1,5 +1,7 @@
 package bookstore;
 
+import Progress.Progress;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,7 +31,20 @@ public class BookShelf {
         return groupBy(book -> Year.of(book.getPublishedOn().getYear()));
     }
 
-    public <T> Map<T, List<Book>> groupBy(Function<Book, T> attr){
+    public <T> Map<T, List<Book>> groupBy(Function<Book, T> attr) {
         return books.stream().collect(Collectors.groupingBy(attr));
+    }
+
+    public Progress progress() {
+        int booksRead = Long.valueOf(
+                books.stream().filter(Book::isRead).count()).intValue();
+        int booksInProgress = Long.valueOf(
+                books.stream().filter(Book::isProgress).count()).intValue();
+        int booksRemaining = books.size() - booksRead - booksInProgress;
+
+        int percentCompleted = booksRead * 100 / books.size() ;
+        int percentRemaining = booksRemaining * 100  / books.size();
+        int percentInProgress = booksInProgress * 100  / books.size();
+        return new Progress(percentCompleted, percentRemaining, 0);
     }
 }
