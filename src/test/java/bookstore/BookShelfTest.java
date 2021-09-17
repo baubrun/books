@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Year;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,6 +22,9 @@ public class BookShelfTest {
     private Book book1;
     private Book book2;
     private Book book3;
+    private Book book4;
+    private Book book5;
+    private Book book6;
 
 
     @BeforeEach
@@ -27,17 +33,27 @@ public class BookShelfTest {
         book1 = new Book(
                 "Zizi Dane",
                 "Marie-Eve Bergeron",
-                LocalDate.of(2021, Month.APRIL, 15));
+                LocalDate.of(2020, Month.APRIL, 15));
 
         book2 = new Book(
                 "Big Bang",
                 "Patrick Cote",
-                LocalDate.of(2021, Month.JANUARY, 5));
+                LocalDate.of(2020, Month.JANUARY, 5));
 
         book3 = new Book(
                 "Amour",
                 "Voltaire",
                 LocalDate.of(2021, Month.MARCH, 9));
+
+        book4 = new Book(
+                "ABC",
+                "D.L",
+                LocalDate.of(2021, Month.DECEMBER, 12));
+
+        book5 = new Book(
+                "Finance",
+                "J.P.B",
+                LocalDate.of(2019, Month.FEBRUARY, 25));
     }
 
     @Test
@@ -108,8 +124,33 @@ public class BookShelfTest {
         Comparator<Book> reversedOrder = Comparator.<Book>naturalOrder().reversed();
         List<Book> books = shelf.arrange(reversedOrder);
         assertThat(books).isSortedAccordingTo(reversedOrder);
+    }
+
+    @Test
+    @DisplayName("should group books by published year")
+    public void group_books_by_published_year(){
+        shelf.add(book1, book2, book3, book4, book5);
+        Map<Year, List<Book>> booksByPublication = shelf.groupByPublicationYear();
+
+        assertThat(booksByPublication)
+                .containsKey(Year.of(2020))
+                .containsValues(List.of(book1, book2));
+
+        assertThat(booksByPublication)
+                .containsKey(Year.of(2019))
+                .containsValues(singletonList(book5));
+    }
+
+    @Test
+    @DisplayName("should group books by attribute")
+    public void group_books_by_attribute(){
+        shelf.add(book1, book2, book3, book4, book5);
+        Map<String, List<Book>> booksByAuthor = shelf.groupBy(Book::getAuthor);
+
+        assertThat(booksByAuthor)
+                .containsKey("J.P.B")
+                .containsValues(singletonList(book5));
 
     }
-    
 
 }
