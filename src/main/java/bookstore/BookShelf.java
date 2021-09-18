@@ -4,6 +4,7 @@ import Progress.Progress;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.time.Year;
 
@@ -42,9 +43,19 @@ public class BookShelf {
                 books.stream().filter(Book::isProgress).count()).intValue();
         int booksRemaining = books.size() - booksRead - booksInProgress;
 
-        int percentCompleted = booksRead * 100 / books.size() ;
-        int percentRemaining = booksRemaining * 100  / books.size();
-        int percentInProgress = booksInProgress * 100  / books.size();
+        int percentCompleted = booksRead * 100 / books.size();
+        int percentRemaining = booksRemaining * 100 / books.size();
+        int percentInProgress = booksInProgress * 100 / books.size();
         return new Progress(percentCompleted, percentRemaining, 0);
+    }
+
+    public List<Book> findByTitle(String title) {
+        return findByTitle(title, x -> true);
+    }
+
+    public List<Book> findByTitle(String title, BookFilter filter) {
+        return books.stream()
+                .filter(b -> b.getTitle().toLowerCase().contains(title))
+                .filter(filter::apply).collect(Collectors.toList());
     }
 }

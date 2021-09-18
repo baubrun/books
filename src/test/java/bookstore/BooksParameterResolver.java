@@ -13,6 +13,49 @@ import java.time.Month;
 import java.lang.reflect.Parameter;
 
 class BooksParameterResolver implements ParameterResolver {
+    private final Map<String, Book> books;
+
+    public BooksParameterResolver() {
+        Map<String, Book> books = new HashMap<>();
+        books.put("book1",
+                new
+
+                        Book(
+                        "Zizi Dane",
+                        "Marie-Eve Bergeron",
+                        LocalDate.of(2020, Month.APRIL, 15)));
+        books.put("book2",
+                new
+
+                        Book(
+                        "Big Bang",
+                        "Patrick Cote",
+                        LocalDate.of(2020, Month.JANUARY, 5)));
+        books.put("book3",
+                new
+
+                        Book(
+                        "Amour Bang",
+                        "Voltaire",
+                        LocalDate.of(2021, Month.MARCH, 9)));
+        books.put("book4",
+                new
+
+                        Book(
+                        "Finance DEP",
+                        "D.L",
+                        LocalDate.of(2021, Month.DECEMBER, 12)));
+        books.put("book5",
+                new
+
+                        Book(
+                        "Finance",
+                        "J.P.B",
+                        LocalDate.of(2019, Month.FEBRUARY, 25)));
+        this.books = books;
+
+    }
+
 
     @Override
     public boolean supportsParameter(
@@ -22,42 +65,17 @@ class BooksParameterResolver implements ParameterResolver {
             throws ParameterResolutionException {
 
         Parameter parameter = parameterContext.getParameter();
-            return (
+        return (
                 Objects.equals(parameter.getParameterizedType().getTypeName(),
                         "java.util.Map<java.lang.String, bookstore.Book>"));
     }
 
     @Override
-    public Object resolveParameter(
+    public Map<String, Book> resolveParameter(
             final ParameterContext parameterContext,
             final ExtensionContext extensionContext
+
     ) throws ParameterResolutionException {
-        Map<String, Book> books = new HashMap<>();
-        books.put("book1",
-                new Book(
-                        "Zizi Dane",
-                        "Marie-Eve Bergeron",
-                        LocalDate.of(2020, Month.APRIL, 15)));
-        books.put("book2",
-                new Book(
-                        "Big Bang",
-                        "Patrick Cote",
-                        LocalDate.of(2020, Month.JANUARY, 5)));
-        books.put("book3",
-                new Book(
-                        "Amour",
-                        "Voltaire",
-                        LocalDate.of(2021, Month.MARCH, 9)));
-        books.put("book4",
-                new Book(
-                        "ABC",
-                        "D.L",
-                        LocalDate.of(2021, Month.DECEMBER, 12)));
-        books.put("book5",
-                new Book(
-                        "Finance",
-                        "J.P.B",
-                        LocalDate.of(2019, Month.FEBRUARY, 25)));
         return books;
 
     }

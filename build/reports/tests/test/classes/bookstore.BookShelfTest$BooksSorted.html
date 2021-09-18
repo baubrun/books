@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - BookProgress</title>
+<title>Test results - sorting books</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>BookProgress</h1>
+<h1>sorting books</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/bookstore.html">bookstore</a> &gt; BookProgressTest</div>
+<a href="../packages/bookstore.html">bookstore</a> &gt; BookShelfTest$BooksSorted</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.002s</div>
+<div class="counter">0.007s</div>
 <p>duration</p>
 </div>
 </td>
@@ -76,15 +76,15 @@
 </tr>
 </thead>
 <tr>
-<td class="success">progress is 60% completed and 40% remaining when 3 book are read</td>
-<td class="success">progress_when_book_read()</td>
-<td class="success">0s</td>
+<td class="success">should sort books by title ASC order</td>
+<td class="success">book_shelf_arrange_by_title_ASC()</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">progress is 0% completed and 100% remaining when book unread</td>
-<td class="success">progress_when_book_unread()</td>
-<td class="success">0.002s</td>
+<td class="success">should sort books by title DESC order</td>
+<td class="success">book_shelf_arrange_by_title_DESC()</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 </table>
